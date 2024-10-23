@@ -27,6 +27,7 @@
 #endif // WX_PRECOMP
 
 #include "wx/display.h"
+#include "wx/modalhook.h"
 
 #include "wx/private/tlwgeom.h"
 
@@ -471,8 +472,16 @@ bool wxTopLevelWindowBase::Layout()
 }
 
 // The default implementation for the close window event.
-void wxTopLevelWindowBase::OnCloseWindow(wxCloseEvent& WXUNUSED(event))
+void wxTopLevelWindowBase::OnCloseWindow(wxCloseEvent& event)
 {
+    if ( event.CanVeto() && wxModalDialogHook::GetOpenCount() )
+    {
+        // We can't close the window if there are any app-modal dialogs still
+        // shown.
+        event.Veto();
+        return;
+    }
+
     Destroy();
 }
 
