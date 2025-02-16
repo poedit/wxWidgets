@@ -163,7 +163,7 @@ public:
           m_eventType(eventType),
           m_bmp(bmp)
     {
-        SetBackgroundStyle(wxBG_STYLE_PAINT);
+        SetBackgroundColour(search->GetBackgroundColour());
     }
 
     void SetBitmapLabel(const wxBitmap& label)
@@ -220,10 +220,6 @@ protected:
     void OnPaint(wxPaintEvent&)
     {
         wxPaintDC dc(this);
-
-        // Clear the background in case of a user bitmap with alpha channel
-        dc.SetBrush(m_search->GetBackgroundColour());
-        dc.Clear();
 
         // Draw the bitmap
         dc.DrawBitmap(m_bmp, 0,0, true);
