@@ -554,7 +554,7 @@ wxSize wxMSWButton::IncreaseToStdSizeAndCache(wxControl *btn, const wxSize& size
         // Moreover, it looks like the extra 2px borders around the visible
         // part of the button are not scaled correctly in higher than normal
         // DPI, so add them without scaling.
-        const wxSize sizeDef = btn->FromDIP(wxSize(73, 21)) + wxSize(2, 2);
+        const wxSize sizeDef = btn->FromDIP(wxSize(86, 24)) + wxSize(2, 2);
 
         sizeBtn.IncTo(sizeDef);
     }
