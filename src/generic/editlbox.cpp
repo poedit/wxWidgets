@@ -111,6 +111,10 @@ bool wxEditableListBox::Create(wxWindow *parent, wxWindowID id,
     if (!wxPanel::Create(parent, id, pos, size, wxTAB_TRAVERSAL, name))
         return false;
 
+#ifdef __WXOSX__
+    SetWindowVariant(wxWINDOW_VARIANT_SMALL);
+#endif
+
     m_style = style;
 
     wxSizer *sizer = new wxBoxSizer(wxVERTICAL);
@@ -122,15 +126,12 @@ bool wxEditableListBox::Create(wxWindow *parent, wxWindowID id,
     subsizer->Add(new wxStaticText(subp, wxID_ANY, label),
                   wxSizerFlags(1).Center().Border(wxLEFT));
 
-    const wxSizerFlags flagsCentered = wxSizerFlags().Center();
-
-    if ( m_style & wxEL_ALLOW_EDIT )
-    {
-        m_bEdit = new wxBitmapButton(subp, wxID_ELB_EDIT,
-                                     wxArtProvider::GetBitmap(wxART_EDIT, wxART_BUTTON));
-        m_bEdit->SetToolTip(_("Edit item"));
-        subsizer->Add(m_bEdit, flagsCentered);
-    }
+    const wxSizerFlags flagsCentered = wxSizerFlags().Center()
+#ifdef __WXOSX__
+        .Border(wxRIGHT, FromDIP(5));
+#else
+        .Border(wxRIGHT | wxTOP | wxBOTTOM, FromDIP(5));
+#endif
 
     if ( m_style & wxEL_ALLOW_NEW )
     {
@@ -138,6 +139,14 @@ bool wxEditableListBox::Create(wxWindow *parent, wxWindowID id,
                                     wxArtProvider::GetBitmap(wxART_NEW, wxART_BUTTON));
         m_bNew->SetToolTip(_("New item"));
         subsizer->Add(m_bNew, flagsCentered);
+    }
+
+    if ( m_style & wxEL_ALLOW_EDIT )
+    {
+        m_bEdit = new wxBitmapButton(subp, wxID_ELB_EDIT,
+                                     wxArtProvider::GetBitmap(wxART_EDIT, wxART_BUTTON));
+        m_bEdit->SetToolTip(_("Edit item"));
+        subsizer->Add(m_bEdit, flagsCentered);
     }
 
     if ( m_style & wxEL_ALLOW_DELETE )
