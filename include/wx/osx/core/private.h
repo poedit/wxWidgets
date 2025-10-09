@@ -160,7 +160,7 @@ public :
     }
 
     virtual ~wxMenuItemImpl() ;
-    virtual void SetBitmap( const wxBitmap& bitmap ) = 0;
+    virtual void SetBitmap( const wxBitmapBundle& bitmap ) = 0;
     virtual void Enable( bool enable ) = 0;
     virtual void Check( bool check ) = 0;
     virtual void SetLabel( const wxString& text, wxAcceleratorEntry *entry ) = 0;
@@ -366,6 +366,8 @@ public :
 
     virtual bool        EnableTouchEvents(int eventsMask) = 0;
 
+    virtual void        ClipsToBounds(bool clip);
+
     // scrolling views need a clip subview that acts as parent for native children
     // (except for the scollbars) which are children of the view itself
     virtual void        AdjustClippingView(wxScrollBar* horizontal, wxScrollBar* vertical);
@@ -373,6 +375,9 @@ public :
 
     // returns native view which acts as a parent for native children
     virtual WXWidget    GetContainer() const;
+
+    // should be called to enable appropriate borders for native controls with scrollview superviews
+    virtual void        ApplyScrollViewBorderType() { }
 
     // Mechanism used to keep track of whether a change should send an event
     // Do SendEvents(false) when starting actions that would trigger programmatic events
