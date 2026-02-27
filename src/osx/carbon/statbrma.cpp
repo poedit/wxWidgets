@@ -202,7 +202,7 @@ void wxStatusBarMac::OnPaint(wxPaintEvent& WXUNUSED(event))
     int textHeight = dc.GetCharHeight();
 
     for ( size_t i = 0; i < m_panes.GetCount(); i ++ )
-        DrawField(dc, i, textHeight);
+        DrawField(dc, (int)i, textHeight);
 }
 
 void wxStatusBarMac::InitCornerInset()

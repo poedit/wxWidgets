@@ -232,7 +232,7 @@ public :
     // from the same pimpl class.
     virtual void                controlTextDidChange();
 
-    virtual void                ClipsToBounds(bool clip) override;
+    virtual void                ClipsToBounds(bool clip) wxOVERRIDE;
 
     virtual void                AdjustClippingView(wxScrollBar* horizontal, wxScrollBar* vertical) wxOVERRIDE;
     virtual void                UseClippingView(bool clip) wxOVERRIDE;
