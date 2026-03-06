@@ -252,12 +252,13 @@ Changes in behaviour which may result in build errors
   minimum required version is now 2005.
 
 
-3.2.10: (released 2026-??-??)
+3.2.10: (released 2026-03-03)
 -----------------------------
 
 All (GUI):
 
 - Fix stc.h with wxNO_IMPLICIT_WXSTRING_ENCODING (reid-p, arch1t3cht, #25047).
+- Fix right/middle click events in vertical wxAuiToolBar (#26242).
 
 wxMSW:
 
@@ -268,8 +269,10 @@ wxMSW:
 
 wxOSX:
 
+- Fix install names after "make install" (#25675).
 - Fix bug when deleting wxDataViewCtrl items (Hartwig Wiesmann, #26138).
 - Fix crash on some key presses in wxDataViewCtrl (#26160).
+- Fix memory leaks in a number of controls (#26208).
 - Fix regression in wxFileDialog filters in 3.2.9 (#26148).
 - Improve wxRichTextCtrl handling of cursor keys (Lee Ockert, #26064).
 - Many appearance fixes for macOS 26 Tahoe (#26058, #25767, #26121).
