@@ -964,7 +964,7 @@ private:
         const wxMsgTableEntry * const ent = pTable + n;
 
         // this check could fail for a corrupt message catalog
-        size_t32 ofsString = Swap(ent->ofsString);
+        wxULongLong_t ofsString = Swap(ent->ofsString);
         if ( ofsString + Swap(ent->nLen) > m_data.length())
         {
             return NULL;
@@ -1225,9 +1225,9 @@ bool wxMsgCatalogFile::FillHash(wxStringToStringHashMap& hash,
 // wxMsgCatalog class
 // ----------------------------------------------------------------------------
 
-#if !wxUSE_UNICODE
 wxMsgCatalog::~wxMsgCatalog()
 {
+#if !wxUSE_UNICODE
     if ( m_conv )
     {
         if ( wxConvUI == m_conv )
@@ -1239,8 +1239,8 @@ wxMsgCatalog::~wxMsgCatalog()
 
         delete m_conv;
     }
-}
 #endif // !wxUSE_UNICODE
+}
 
 /* static */
 wxMsgCatalog *wxMsgCatalog::CreateFromFile(const wxString& filename,

@@ -252,6 +252,112 @@ Changes in behaviour which may result in build errors
   minimum required version is now 2005.
 
 
+3.2.12: (released 2026-??-??)
+-----------------------------
+
+All:
+
+- Update Unicode mapping tables to current versions (Scott Talbert, #26700).
+
+All (GUI):
+
+- Handle mouse capture loss when using wxContextHelp (Richard Thomson, #21534).
+- Always recognize common file types in wxHTML (Richard Thomson, #20967).
+- Respect background colour when printing in wxHTML (Richard Thomson, #20652).
+- Fix handling of image map coordinates in wxHTML (Richard Thomson, #3163).
+- Don't show modal HTML help window for not found topic (Richard Thomson, #3219).
+- Recognize "Dstrok" as an entity in wxHTML (Richard Thomson, #3996).
+- Fix XRC unknown-control size hints after attaching (Richard Thomson, #2726).
+- Fix handling spacing in wxGridBagSizer (Richard Thomson, #3105).
+- Fix handling TGA files with invalid size (MarkLee131, #26760).
+- Fix buffer overflow with invalid cached help books (MarkLee131, #26765).
+
+wxGTK
+
+- Fix using SetBitmap() on wxMenuItem created without a bitmap (ykne, #26771).
+- Fix memory leak with using custom handlers in wxWebView (Blake-Madden, #26784).
+- Use string passed to wxApp::SetClassName() as Wayland app-id (#24668).
+
+wxMSW:
+
+- Fix wrong refresh in wxStaticBitmap::SetBitmap() (Steve Murphree, #26730).
+- Fix drawing of 1x1 rectangles (Richard Thomson, #3096).
+- Account for the column header in wxMSW wxListCtrl::HitTest() (PB, #22239).
+
+wxOSX:
+
+- Fix crash toggling a toolbar item without a bitmap (Alexandru Ilie, #26763).
+
+
+3.2.11: (released 2026-07-07)
+-----------------------------
+
+All:
+
+- Support defining wxNO_IMPLICIT_WXSTRING_CONV_TO_PTR in wxString (#26307).
+- Fix wxCondition and wxSemaphore::WaitTimeout() after 2038 under Unix (#26466).
+- Fix buffer overflow in wxGethostby{addr,name}_r() (dxbjavid, #26528).
+- Fix buffer overflow in wxTarInputStream (dxbjavid, #26530).
+- Fix out-of-bounds read in wxFileType::ExpandCommand() (dxbjavid, #26531).
+- Fix buffer overflow in wxVsnprintf() (dxbjavid, #26522).
+- Fix out-of-bounds read in wxRegEx::Replace() (dxbjavid, #26541).
+- Fix out-of-bounds read in wxUString (dxbjavid, #26548).
+- Fix wxDateTime::Format() handling of invalid format (dxbjavid, #26543).
+- Fix buffer overflow in wxGethostbyxxx_r() on some systems (dxbjavid, #26553).
+
+All (GUI):
+
+- Fix wxCaret position in scrolled windows (#26282).
+- Correct delta-RLE bitmap background colour (Brian Nixon, #23599).
+- Correct loading of `BI_BITFIELDS` bitmaps (Brian Nixon, #23601).
+- Fix loading 32bpp BMP files without valid alpha (#24219).
+- Fix buffer overwrite when loading malformed BMPs with invalid RLE data.
+- Avoid out-of-bounds palette read in 8bpp BMP decoder (MarkLee131, #26438).
+- Avoid out-of-bounds palette write in wxIFFDecoder (MarkLee131, #26440).
+- Avoid out-of-bounds read in wxPCXHandler (MarkLee131, #26441).
+- Avoid out-of-bounds read in wxXPMDecoder (MarkLee131, #26442).
+- Fix reading ANI images with invalid frame count (dxbjavid, #26492).
+- Avoid out-of-bounds write for invalid BMP RLE runs (dxbjavid, #26496).
+- Fix out-of-bounds read when loading invalid 4bpp BMPs (dxbjavid, #26511).
+- Avoid out-of-bounds write on bad BMHD chunk in wxIFFDecoder (jmestwa, #26497).
+- Fix write overflow in TGA files with invalid colour map (dxbjavid, #26493).
+- Fix read overflow in wxXPMDecoder on unterminated quote (dxbjavid, #26499).
+- Fix read overflow in wxXPMDecoder on invalid width (dxbjavid, #26519).
+- Reject more invalid GIFs and do it without leaking memory (dxbjavid, #26501).
+- Fix buffer overflows decoding invalid GIFs (dxbjavid, #26521, #26524).
+- Fix multiple buffer overflows in wxIFFDecoder (dxbjavid, #26505, #26518).
+- Fix multiple buffer overflows in wxSound (dxbjavid, #26506, #26525).
+- Fix reading too short extra field in ZIP64 files (dxbjavid, #26507).
+- Fix out-of-bounds table read in wxMBConvUTF7::ToWChar() (dxbjavid, #26517).
+- Fix buffer overflow reading corrupted message catalogs (dxbjavid, #26513).
+- Fix buffer overflow for too big tables in wxHTML (dxbjavid, #26554).
+- Add wxGrid::GetFrozen{Row,Col}LabelWindow() (Jorge Moraleda, #26617).
+- Fix wxPG macros with wxNO_IMPLICIT_WXSTRING_ENCODING (Lunar-YZ, #26651).
+
+wxGTK:
+
+- Fix copy/paste when a clipboard manager is running (David Edmundson, #26265).
+- Fix crash with EGL-based wxGLCanvas in wxNotebook (Florian Larysch, #26340).
+- Fix possible wxTextCtrl crash with GSpell attached (#26464).
+- Fix drawing of very large bitmaps (#25656).
+- Fix memory leak in wxDataViewChoiceRenderer.
+- Fix resource leak when using EGL with X11 (Florian Larysch, #26341).
+- Fix showing title bar under Wayland with wxBORDER_NONE (#26357).
+- Remove wrong maximum text length limitation in "picker" controls (#26314).
+- Fix appearance of dashed lines drawn by wxDC::DrawLine() (#26449).
+- Fix non-resizable TLW size when client size is set to initial size (#26480).
+
+wxMSW:
+
+- Fix wxBufferedPaintDC when using RTL layout (AliKet, #26266).
+- Use default style in wxTextCtrl::SetValue() (#26320).
+
+wxOSX:
+
+- Fix crash after destroying wxFileSystemWatcher (Juraj Kavka, #26658).
+- Fix possible crash in wxFont::SetNativeFontInfo() (Václav Slavík, #26411).
+
+
 3.2.10: (released 2026-03-03)
 -----------------------------
 
